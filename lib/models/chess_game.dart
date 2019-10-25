@@ -1,14 +1,15 @@
 class ChessGame {
-  final Team redTeam = Team('player1');
-  final Team blackTeam = Team('player2');
+  final Player player1 = Player(false, 'player1');
+  final Player player2 = Player(true, 'player2');
   final List<Move> moves = <Move>[];
 }
 
-class Team {
+class Player {
+  final bool takingRed;
   final String displayName;
   final List<ChessPiece> chessPieces = <ChessPiece>[];
 
-  Team(this.displayName) {
+  Player(this.takingRed, this.displayName) {
     chessPieces.addAll([
       GeneralPiece(),
       AdvisorPiece(),
