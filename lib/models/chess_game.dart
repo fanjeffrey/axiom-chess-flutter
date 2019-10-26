@@ -2,14 +2,15 @@ class ChessGame {
   final Player player1 = Player(false, 'player1');
   final Player player2 = Player(true, 'player2');
   final List<Move> moves = <Move>[];
-}
+  final List<ChessPiece> redChessPieces = <ChessPiece>[];
+  final List<ChessPiece> blackChessPieces = <ChessPiece>[];
 
-class Player {
-  final bool takingRed;
-  final String displayName;
-  final List<ChessPiece> chessPieces = <ChessPiece>[];
+  ChessGame() {
+    initPieces(redChessPieces);
+    initPieces(blackChessPieces);
+  }
 
-  Player(this.takingRed, this.displayName) {
+  initPieces(List<ChessPiece> chessPieces) {
     chessPieces.addAll([
       GeneralPiece(),
       AdvisorPiece(),
@@ -29,6 +30,13 @@ class Player {
       SoldierPiece()
     ]);
   }
+}
+
+class Player {
+  final bool takingRed;
+  final String displayName;
+
+  Player(this.takingRed, this.displayName);
 }
 
 class Move {}
