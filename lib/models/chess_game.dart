@@ -1,6 +1,6 @@
 class ChessGame {
-  final Player player1 = Player(false, 'player1');
-  final Player player2 = Player(true, 'player2');
+  final Player hostPlayer = Player(false, 'player1');
+  final Player guestPlayer = Player(true, 'player2');
   final List<Move> moves = <Move>[];
   final List<ChessPiece> redChessPieces = <ChessPiece>[];
   final List<ChessPiece> blackChessPieces = <ChessPiece>[];

@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('A new chess game should has initial state and settings.', () {
     var game = ChessGame();
-    expect(game.player1.takingRed, false);
-    expect(game.player2.takingRed, true);
     verifyChessPieces(game.redChessPieces);
     verifyChessPieces(game.blackChessPieces);
+    expect(game.hostPlayer.takingRed, false);
+    expect(game.guestPlayer.takingRed, true);
     expect(game.moves.length, 0);
   });
 }
