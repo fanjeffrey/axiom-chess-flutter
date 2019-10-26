@@ -1,13 +1,17 @@
+import 'player.dart';
+
 class ChessGame {
-  final Player hostPlayer = Player(false, 'player1');
-  final Player guestPlayer = Player(true, 'player2');
+  final Player hostPlayer;
+  final Player guestPlayer;
   final List<Move> moves = <Move>[];
   final List<ChessPiece> redChessPieces = <ChessPiece>[];
   final List<ChessPiece> blackChessPieces = <ChessPiece>[];
 
-  ChessGame() {
+  ChessGame(this.hostPlayer, this.guestPlayer) {
     initPieces(redChessPieces);
     initPieces(blackChessPieces);
+    hostPlayer.takeBlack();
+    guestPlayer.takeRed();
   }
 
   initPieces(List<ChessPiece> chessPieces) {
@@ -30,13 +34,6 @@ class ChessGame {
       SoldierPiece()
     ]);
   }
-}
-
-class Player {
-  final bool takingRed;
-  final String displayName;
-
-  Player(this.takingRed, this.displayName);
 }
 
 class Move {}
