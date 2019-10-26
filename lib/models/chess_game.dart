@@ -33,18 +33,61 @@ class Player {
 
 class Move {}
 
-abstract class ChessPiece {}
+abstract class ChessPiece {
+  String name;
+}
 
-class GeneralPiece extends ChessPiece {}
+class GeneralPiece extends ChessPiece {
+  static const String Name = 'General';
 
-class AdvisorPiece extends ChessPiece {}
+  GeneralPiece() {
+    name = Name;
+  }
+}
 
-class ElephantPiece extends ChessPiece {}
+class AdvisorPiece extends ChessPiece {
+  static const String Name = 'Advisor';
 
-class HorsePiece extends ChessPiece {}
+  AdvisorPiece() {
+    name = Name;
+  }
+}
 
-class ChariotPiece extends ChessPiece {}
+class ElephantPiece extends ChessPiece {
+  static const String Name = 'Elephant';
 
-class CannonPiece extends ChessPiece {}
+  ElephantPiece() {
+    name = Name;
+  }
+}
 
-class SoldierPiece extends ChessPiece {}
+class HorsePiece extends ChessPiece {
+  static const String Name = 'Horse';
+
+  HorsePiece() {
+    name = Name;
+  }
+}
+
+class ChariotPiece extends ChessPiece {
+  static const String Name = 'Chariot';
+
+  ChariotPiece() {
+    name = Name;
+  }
+}
+
+class CannonPiece extends ChessPiece {
+  static const String Name = 'Cannon';
+
+  CannonPiece() {
+    name = Name;
+  }
+}
+
+class SoldierPiece extends ChessPiece {
+  static const String Name = 'Soldier';
+  SoldierPiece() {
+    name = Name;
+  }
+}
