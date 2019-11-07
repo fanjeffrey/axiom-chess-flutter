@@ -1,8 +1,12 @@
+import 'chess_board.dart';
+import 'chess_piece.dart';
 import 'player.dart';
+import 'position.dart';
 
 class ChessGame {
   final Player hostPlayer;
   final Player guestPlayer;
+  final ChessBoard chessBoard = ChessBoard();
   final List<Move> moves = <Move>[];
   final List<ChessPiece> redChessPieces = <ChessPiece>[];
   final List<ChessPiece> blackChessPieces = <ChessPiece>[];
@@ -12,87 +16,30 @@ class ChessGame {
     initPieces(blackChessPieces);
     hostPlayer.takeBlack();
     guestPlayer.takeRed();
+    chessBoard.arrangePiecesAtBottom(blackChessPieces);
+    chessBoard.arrangePiecesAtTop(redChessPieces);
   }
 
   initPieces(List<ChessPiece> chessPieces) {
     chessPieces.addAll([
-      GeneralPiece(),
-      AdvisorPiece(),
-      AdvisorPiece(),
-      ElephantPiece(),
-      ElephantPiece(),
-      HorsePiece(),
-      HorsePiece(),
-      ChariotPiece(),
-      ChariotPiece(),
-      CannonPiece(),
-      CannonPiece(),
-      SoldierPiece(),
-      SoldierPiece(),
-      SoldierPiece(),
-      SoldierPiece(),
-      SoldierPiece()
+      GeneralPiece(Position(rank: 1, file: 5)),
+      AdvisorPiece(Position(rank: 1, file: 4)),
+      AdvisorPiece(Position(rank: 1, file: 6)),
+      ElephantPiece(Position(rank: 1, file: 3)),
+      ElephantPiece(Position(rank: 1, file: 7)),
+      HorsePiece(Position(rank: 1, file: 2)),
+      HorsePiece(Position(rank: 1, file: 8)),
+      ChariotPiece(Position(rank: 1, file: 1)),
+      ChariotPiece(Position(rank: 1, file: 9)),
+      CannonPiece(Position(rank: 3, file: 2)),
+      CannonPiece(Position(rank: 3, file: 8)),
+      SoldierPiece(Position(rank: 4, file: 1)),
+      SoldierPiece(Position(rank: 4, file: 3)),
+      SoldierPiece(Position(rank: 4, file: 5)),
+      SoldierPiece(Position(rank: 4, file: 7)),
+      SoldierPiece(Position(rank: 4, file: 9))
     ]);
   }
 }
 
 class Move {}
-
-abstract class ChessPiece {
-  String name;
-}
-
-class GeneralPiece extends ChessPiece {
-  static const String Name = 'General';
-
-  GeneralPiece() {
-    name = Name;
-  }
-}
-
-class AdvisorPiece extends ChessPiece {
-  static const String Name = 'Advisor';
-
-  AdvisorPiece() {
-    name = Name;
-  }
-}
-
-class ElephantPiece extends ChessPiece {
-  static const String Name = 'Elephant';
-
-  ElephantPiece() {
-    name = Name;
-  }
-}
-
-class HorsePiece extends ChessPiece {
-  static const String Name = 'Horse';
-
-  HorsePiece() {
-    name = Name;
-  }
-}
-
-class ChariotPiece extends ChessPiece {
-  static const String Name = 'Chariot';
-
-  ChariotPiece() {
-    name = Name;
-  }
-}
-
-class CannonPiece extends ChessPiece {
-  static const String Name = 'Cannon';
-
-  CannonPiece() {
-    name = Name;
-  }
-}
-
-class SoldierPiece extends ChessPiece {
-  static const String Name = 'Soldier';
-  SoldierPiece() {
-    name = Name;
-  }
-}
