@@ -12,12 +12,12 @@ void main() {
     verifyCalculateIndex(chessBoard, 4, 1, 27);
     verifyCalculateIndex(chessBoard, 4, 9, 35);
 
-    verifyPositionIndexFromTop(chessBoard, 1, 1, 89);
-    verifyPositionIndexFromTop(chessBoard, 1, 9, 81);
-    verifyPositionIndexFromTop(chessBoard, 3, 2, 70);
-    verifyPositionIndexFromTop(chessBoard, 3, 8, 64);
-    verifyPositionIndexFromTop(chessBoard, 4, 1, 62);
-    verifyPositionIndexFromTop(chessBoard, 4, 9, 54);
+    verifyCalculateIndexFromTop(chessBoard, 1, 1, 89);
+    verifyCalculateIndexFromTop(chessBoard, 1, 9, 81);
+    verifyCalculateIndexFromTop(chessBoard, 3, 2, 70);
+    verifyCalculateIndexFromTop(chessBoard, 3, 8, 64);
+    verifyCalculateIndexFromTop(chessBoard, 4, 1, 62);
+    verifyCalculateIndexFromTop(chessBoard, 4, 9, 54);
   });
 }
 
@@ -28,7 +28,7 @@ void verifyCalculateIndex(
   expect(index, expectedIndex);
 }
 
-void verifyPositionIndexFromTop(
+void verifyCalculateIndexFromTop(
     ChessBoard chessBoard, int rank, int file, int expectedIndex) {
   var position = Position(rank: rank, file: file);
   var index = chessBoard.calculateIndexFromTop(position);
