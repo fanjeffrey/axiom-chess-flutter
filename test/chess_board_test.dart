@@ -28,11 +28,27 @@ void main() {
     group('ChessBoard.arrangePiecesAtBottom', () {
       verifyArrangePiecesAtBottom(
           chessBoard, GeneralPiece(Position(rank: 1, file: 5)), 1, 5, 4);
+      verifyArrangePiecesAtBottom(
+          chessBoard, ChariotPiece(Position(rank: 1, file: 1)), 1, 1, 0);
+      verifyArrangePiecesAtBottom(
+          chessBoard, ChariotPiece(Position(rank: 1, file: 9)), 1, 9, 8);
+      verifyArrangePiecesAtBottom(
+          chessBoard, CannonPiece(Position(rank: 3, file: 2)), 3, 2, 19);
+      verifyArrangePiecesAtBottom(
+          chessBoard, CannonPiece(Position(rank: 3, file: 8)), 3, 8, 25);
     });
 
     group('ChessBoard.arrangePiecesAtTop', () {
       verifyArrangePiecesAtTop(
           chessBoard, GeneralPiece(Position(rank: 1, file: 5)), 1, 5, 85);
+      verifyArrangePiecesAtTop(
+          chessBoard, ChariotPiece(Position(rank: 1, file: 1)), 1, 1, 89);
+      verifyArrangePiecesAtTop(
+          chessBoard, ChariotPiece(Position(rank: 1, file: 9)), 1, 9, 81);
+      verifyArrangePiecesAtTop(
+          chessBoard, CannonPiece(Position(rank: 3, file: 2)), 3, 2, 70);
+      verifyArrangePiecesAtTop(
+          chessBoard, CannonPiece(Position(rank: 3, file: 8)), 3, 8, 64);
     });
   });
 }
