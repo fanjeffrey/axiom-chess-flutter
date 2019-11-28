@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: run flutter test
-      uses: flutter test
+      run: flutter test
