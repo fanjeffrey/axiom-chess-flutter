@@ -10,7 +10,7 @@ jobs:
     container:
       image: cirrusci/flutter:latest
 
-    test_task:
-      pub_cache:
-        folder: ~/.pub-cache
-      test_script: flutter test
+    steps:
+    - uses: actions/checkout@v1
+    - name: run flutter test
+      uses: flutter test
