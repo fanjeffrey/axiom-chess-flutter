@@ -2,37 +2,22 @@ import 'package:flutter_chess/models/chess_board.dart';
 import 'package:flutter_chess/models/chess_game.dart';
 import 'package:flutter_chess/models/chess_piece.dart';
 import 'package:flutter_chess/models/player.dart';
-import 'package:flutter_chess/models/position.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('A new chess game should has initial state and settings.', () {
-    var player1 = Player('player1');
-    var player2 = Player('player2');
-    var game = ChessGame(player1, player2);
-    verifyChessBoard(game.chessBoard);
+  test('a new f2f chess game should has initial state and settings.', () {
+    var me = Player('player1');
+    var opponent = Player('player2');
+    var game = ChessGame.f2f(me, opponent);
     verifyChessPiecesOnChessBoard(game.chessBoard);
     verifyChessPieces(game.redChessPieces);
     verifyChessPieces(game.blackChessPieces);
-    expect(game.hostPlayer.takingRed, false);
-    expect(player1.takingRed, game.hostPlayer.takingRed);
-    expect(game.guestPlayer.takingRed, true);
-    expect(player2.takingRed, game.guestPlayer.takingRed);
+    expect(me.takingRed, false);
+    expect(me.takingRed, game.me.takingRed);
+    expect(opponent.takingRed, true);
+    expect(opponent.takingRed, game.opponent.takingRed);
     expect(game.moves.length, 0);
   });
-}
-
-void verifyChessBoard(ChessBoard chessBoard) {
-  expect(chessBoard != null, true);
-  expect(chessBoard.positions.length, 90);
-  expect(chessBoard.positions[0], Position(rank: 1, file: 1));
-  expect(chessBoard.positions[8], Position(rank: 1, file: 9));
-  expect(chessBoard.positions[9], Position(rank: 2, file: 1));
-  expect(chessBoard.positions[17], Position(rank: 2, file: 9));
-  expect(chessBoard.positions[18], Position(rank: 3, file: 1));
-  expect(chessBoard.positions[26], Position(rank: 3, file: 9));
-  expect(chessBoard.positions[81], Position(rank: 10, file: 1));
-  expect(chessBoard.positions[89], Position(rank: 10, file: 9));
 }
 
 void verifyChessPiecesOnChessBoard(ChessBoard chessBoard) {
@@ -83,6 +68,8 @@ void verifyChessPiecesOnChessBoard(ChessBoard chessBoard) {
 }
 
 void verifyChessPieces(List<ChessPiece> chessPieces) {
+  expect(chessPieces.length, 16);
+
   var generalPieces = chessPieces.where((p) {
     return p.name == GeneralPiece.Name;
   }).toList();

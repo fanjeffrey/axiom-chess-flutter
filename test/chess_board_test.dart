@@ -7,6 +7,27 @@ void main() {
   group('ChessBoard', () {
     var chessBoard = ChessBoard();
 
+    group('ChessBoard.constructor', () {
+      test('the count of the chess positions should be exactly equal to 90',
+          () {
+        expect(chessBoard.positions.length, 90);
+      });
+
+      var expectedPositions = {
+        0: Position(rank: 1, file: 1),
+        8: Position(rank: 1, file: 9),
+        9: Position(rank: 2, file: 1),
+        17: Position(rank: 2, file: 9),
+        18: Position(rank: 3, file: 1),
+        26: Position(rank: 3, file: 9),
+        81: Position(rank: 10, file: 1),
+        89: Position(rank: 10, file: 9)
+      };
+
+      expectedPositions.forEach((index, expectedPosition) =>
+          verifyPosition(chessBoard, index, expectedPosition));
+    });
+
     group('ChessBoard.calculateIndex', () {
       verifyCalculateIndex(chessBoard, 1, 1, 0);
       verifyCalculateIndex(chessBoard, 1, 9, 8);
@@ -50,6 +71,15 @@ void main() {
       verifyArrangePiecesAtTop(
           chessBoard, CannonPiece(Position(rank: 3, file: 8)), 3, 8, 64);
     });
+  });
+}
+
+void verifyPosition(
+    ChessBoard chessBoard, int index, Position expectedPosition) {
+  test(
+      'the position at #$index should be position: {rank: ${expectedPosition.rank}, file: ${expectedPosition.file}}',
+      () {
+    expect(chessBoard.positions[index], expectedPosition);
   });
 }
 

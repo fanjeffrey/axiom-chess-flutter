@@ -4,18 +4,18 @@ import 'player.dart';
 import 'position.dart';
 
 class ChessGame {
-  final Player hostPlayer;
-  final Player guestPlayer;
+  final Player me;
+  final Player opponent;
   final ChessBoard chessBoard = ChessBoard();
   final List<Move> moves = <Move>[];
   final List<ChessPiece> redChessPieces = <ChessPiece>[];
   final List<ChessPiece> blackChessPieces = <ChessPiece>[];
 
-  ChessGame(this.hostPlayer, this.guestPlayer) {
+  ChessGame.f2f(this.me, this.opponent) {
     initPieces(redChessPieces);
     initPieces(blackChessPieces);
-    hostPlayer.takeBlack();
-    guestPlayer.takeRed();
+    me.takeBlack();
+    opponent.takeRed();
     chessBoard.arrangePiecesAtBottom(blackChessPieces);
     chessBoard.arrangePiecesAtTop(redChessPieces);
   }
