@@ -1,49 +1,45 @@
+import 'chess_board.dart';
+import 'chess_piece.dart';
+import 'player.dart';
+import 'position.dart';
+
 class ChessGame {
-  final Team redTeam = Team('player1');
-  final Team blackTeam = Team('player2');
+  final Player me;
+  final Player opponent;
+  final ChessBoard chessBoard = ChessBoard();
   final List<Move> moves = <Move>[];
-}
+  final List<ChessPiece> redChessPieces = <ChessPiece>[];
+  final List<ChessPiece> blackChessPieces = <ChessPiece>[];
 
-class Team {
-  final String displayName;
-  final List<ChessPiece> chessPieces = <ChessPiece>[];
+  ChessGame.f2f(this.me, this.opponent) {
+    initPieces(redChessPieces);
+    initPieces(blackChessPieces);
+    me.takeBlack();
+    opponent.takeRed();
+    chessBoard.arrangePiecesAtBottom(blackChessPieces);
+    chessBoard.arrangePiecesAtTop(redChessPieces);
+  }
 
-  Team(this.displayName) {
+  initPieces(List<ChessPiece> chessPieces) {
     chessPieces.addAll([
-      GeneralPiece(),
-      AdvisorPiece(),
-      AdvisorPiece(),
-      ElephantPiece(),
-      ElephantPiece(),
-      HorsePiece(),
-      HorsePiece(),
-      ChariotPiece(),
-      ChariotPiece(),
-      CannonPiece(),
-      CannonPiece(),
-      SoldierPiece(),
-      SoldierPiece(),
-      SoldierPiece(),
-      SoldierPiece(),
-      SoldierPiece()
+      GeneralPiece(Position(rank: 1, file: 5)),
+      AdvisorPiece(Position(rank: 1, file: 4)),
+      AdvisorPiece(Position(rank: 1, file: 6)),
+      ElephantPiece(Position(rank: 1, file: 3)),
+      ElephantPiece(Position(rank: 1, file: 7)),
+      HorsePiece(Position(rank: 1, file: 2)),
+      HorsePiece(Position(rank: 1, file: 8)),
+      ChariotPiece(Position(rank: 1, file: 1)),
+      ChariotPiece(Position(rank: 1, file: 9)),
+      CannonPiece(Position(rank: 3, file: 2)),
+      CannonPiece(Position(rank: 3, file: 8)),
+      SoldierPiece(Position(rank: 4, file: 1)),
+      SoldierPiece(Position(rank: 4, file: 3)),
+      SoldierPiece(Position(rank: 4, file: 5)),
+      SoldierPiece(Position(rank: 4, file: 7)),
+      SoldierPiece(Position(rank: 4, file: 9))
     ]);
   }
 }
 
 class Move {}
-
-abstract class ChessPiece {}
-
-class GeneralPiece extends ChessPiece {}
-
-class AdvisorPiece extends ChessPiece {}
-
-class ElephantPiece extends ChessPiece {}
-
-class HorsePiece extends ChessPiece {}
-
-class ChariotPiece extends ChessPiece {}
-
-class CannonPiece extends ChessPiece {}
-
-class SoldierPiece extends ChessPiece {}
