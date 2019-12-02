@@ -29,12 +29,12 @@ void main() {
     });
 
     group('ChessBoard.calculateIndex', () {
-      verifyCalculateIndex(chessBoard, 1, 1, 0);
-      verifyCalculateIndex(chessBoard, 1, 9, 8);
-      verifyCalculateIndex(chessBoard, 3, 2, 19);
-      verifyCalculateIndex(chessBoard, 3, 8, 25);
-      verifyCalculateIndex(chessBoard, 4, 1, 27);
-      verifyCalculateIndex(chessBoard, 4, 9, 35);
+      verifyCalculateIndex(chessBoard, Position(rank: 1, file: 1), 0);
+      verifyCalculateIndex(chessBoard, Position(rank: 1, file: 9), 8);
+      verifyCalculateIndex(chessBoard, Position(rank: 3, file: 2), 19);
+      verifyCalculateIndex(chessBoard, Position(rank: 3, file: 8), 25);
+      verifyCalculateIndex(chessBoard, Position(rank: 4, file: 1), 27);
+      verifyCalculateIndex(chessBoard, Position(rank: 4, file: 9), 35);
     });
 
     group('ChessBoard.calculateIndexFromTop', () {
@@ -76,19 +76,14 @@ void main() {
 
 void verifyPosition(
     ChessBoard chessBoard, int index, Position expectedPosition) {
-  test(
-      'the position at #$index should be position: {rank: ${expectedPosition.rank}, file: ${expectedPosition.file}}',
-      () {
+  test('the position at #$index should be position: $expectedPosition', () {
     expect(chessBoard.positions[index], expectedPosition);
   });
 }
 
 void verifyCalculateIndex(
-    ChessBoard chessBoard, int rank, int file, int expectedIndex) {
-  test(
-      'the index of the position at rank #$rank and file #$file should be #$expectedIndex',
-      () {
-    var position = Position(rank: rank, file: file);
+    ChessBoard chessBoard, Position position, int expectedIndex) {
+  test('the index of the position $position should be #$expectedIndex', () {
     var index = chessBoard.calculateIndex(position);
     expect(index, expectedIndex);
   });
